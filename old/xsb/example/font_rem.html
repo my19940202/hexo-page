@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PX ppi dppx dpi dpr  rem em</title>
+    <style type="text/css">
+    	html {
+    		font-size: 20px;
+    	}
+        div {
+            background-color: #FCA;
+        }
+        .rem {
+            width: 10rem;
+            height: 10rem;
+            font-size:2rem;
+        }
+        .rem_inner {
+            width: 5rem;
+            height: 5rem;
+            background-color: #FDA;
+            font-size:1rem;
+        }
+    </style>
+</head>
+<body>
+    <p>this is the default font size</p>
+    <h3>几个尺寸单位的辨析</h3>
+    <h4>rem 根据的尺寸以html元素为基础
+    </h4>
+	<div class="rem">
+     size: 2rem
+        <div class="rem_inner">rem_inner</div>
+    </div>
+</body>
+</html>

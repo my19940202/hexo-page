@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>文章内容</title>
+	<link href="css/article.css" rel="stylesheet">
+	<link href="css/base.min.css" rel="stylesheet" media="screen">
+    <link id="prettify-style" href="css/prettify-cmd.css" type="text/css" rel="stylesheet" media="screen">
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/mustache.js"></script>
+    <script id="template" type="x-tmpl-mustache">
+		<div class="ds-thread" data-thread-key="my19940202@{{id}}" data-title="{{title}}" data-url="{{url}}"></div>
+		<script type="text/javascript">
+				var duoshuoQuery = {short_name:"xishengbo"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] 
+					 || document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+		</script>
+	</script>
+    <style type="text/css">
+    	body {
+    		background-color: #f9f9f5;
+    	}
+		.container {
+			width: 980px;
+			padding: 20px 0;
+			margin: 0 auto;
+		}
+    </style>
+</head>
+
+<body>
+	<header>
+		<div class="back"> <a href="/"> &lt; </a></div>
+		文章页面
+	</header>
+	<div class="container" id="target">
+
+	</div>
+	<footer class="container">
+	</footer>
+	<div class="container">还是自己写css 样式吧 用别人就是别扭</div>
+</body>
+<script type="text/javascript">
+		var loc = window.location;
+		var tmpid = id = loc.split(/#/g)[1];
+		// 区分线上和线下
+		if (loc.match('my19940202.github.io')) {
+			tmpid = id + 'ongithub.io';
+		}
+		var blogTitle = loc.href.split(/#/g)[2];
+		document.title = blogTitle;
+		var src = 'md/' + id + '.html';
+		function loadUser() {
+			$.ajax({
+				type: "GET",
+				url: src,
+				success: function(template) {
+				    var rendered = Mustache.render(template, {});
+				    $('#target').html(rendered);
+				    // 评论区
+	    			var tpl = $('#template').html();
+					Mustache.parse(tpl);
+					var re = Mustache.render(tpl, {title: blogTitle, url: loc, id: tmpid});
+					$('footer').html(re);
+				},
+				error: function() {
+					$('#target').html('>_< 没有找到该文章,<a href="/"> 返回首页 </a>');	
+				}
+			});
+		}
+		loadUser();
+	</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iframe study</title>
+	<style type="text/css">
+		* {
+            padding:0px;
+            margin:0px;
+        }
+	</style>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+    var addr = window.location.search;
+    var startTime =  +new Date();
+    addr = addr.replace('?', '');
+    var img = document.createElement('img');
+    var body = document.getElementsByTagName('body')[0];
+    img.src = addr || 'http://placeholder.qiniudn.com/754x754/4CD964/fff';
+    var bb = body.appendChild(img);
+    window.onload = function(){
+        console.log(startTime, window.location.href,+new Date());
+    };
+</script>
+</html>
+<!-- 图片自适应的处理可以可以处理 就是获取clientHeight clientWidth  然后再去设置img width -->

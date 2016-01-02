@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS 文章</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/article.css" rel="stylesheet">
+	<script type="text/javascript" src="js/mustache.js"></script>
+	<script id="template" type="x-tmpl-mustache">
+		<ul class="breadcrumb">
+			<li><a href="/">首页</a> <span class="divider">/</span></li>
+			<li><a href="#"><b>{{{category}}}</b>列表</a></li>
+		</ul>
+		<ul class="unstyled mylist">
+			{{#list}}
+				<li><a href="{{{curl}}}#{{{title}}}">{{{title}}}</a> &nbsp;&nbsp; posted：{{{date}}}<i class="icon-chevron-right"></i></li>
+			{{/list}}
+
+		</ul>
+	</script>
+	<!-- 实现思路主要是通过mustache模板进行内容替换 -->
+</head>
+
+<body>
+	<header>
+		<div class="back"> <a href="/"> &lt; </a></div>列表页
+	</header>
+	
+
+
+	<div class="container" id="container">
+	</div>
+
+
+	<footer>
+		<div class="container">还是自己写css 样式吧 用别人就是别扭</div>
+	</footer>
+</body>
+<script type="text/javascript" src="js/article.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		function g(str) {
+			return document.getElementById(str);
+		}
+		// category
+		var loc = window.location;
+		var category = loc.href.split(/\?/g)[1];
+		dataList.category = category;
+		category  = '_' + category;
+		dataList.list = dataList[category];
+
+		var template = g('template').innerHTML;
+		Mustache.parse(template);
+		var rendered = Mustache.render(template, dataList);
+		g('container').innerHTML = rendered;
+	}
+</script>
+</html>

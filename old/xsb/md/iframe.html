@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iframe study</title>
+	<style type="text/css">
+		html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+	iframe {
+		border: 1px solid red;
+	}
+
+	</style>
+</head>
+<body>
+<!-- 	<iframe width="500" height="400" src="http://imageplus.baidu.com/img_out.html?bigsrc=http%3A%2F%2F10.26.83.31%3A8800%2Fstatic%2Fimageplus.0429%2Fimages%2F46386.jpg&thumwidth=200&thumheight=100&bigwidth=250&bigheight=200&thumsrc=http%3A%2F%2F10.26.83.31%3A8800%2Fstatic%2Fimageplus.0429%2Fimages%2F46380.jpg" frameborder="1" scrolling="no"></iframe> -->
+	<iframe width="200" height="200" src="iframe_img.html?http://my19940202.github.io/xsb/img/priority.png#11111" frameborder="0"></iframe>
+
+
+		<iframe width="200" height="200" src="iframe_img.html?http://y0.ifengimg.com/ifengimcp/pic/20150420/efcc801fa67766b609b0_size138_w980_h685.jpg#22222" frameborder="0"></iframe>
+
+<iframe width="200" height="200" src="iframe_img.html?#33333" frameborder="0"></iframe>
+<hr>
+<h5>+new Date() 会输出1970 至今的毫秒数，根据在chrome 下面的观察数据（第一次加载，后面几次刷新都会被缓存影响）<br/>
+多个iframe加载时，iframe之间是并行的（一个页面太多iframe 对性能影响较大咔咔咔咔咔） chrome 测试加载时间基本之差78毫秒，
+主页面的iframe
+</h5>
+
+</body>
+<script type="text/javascript">
+    var jiba = +new Date();
+	console.log( jiba,'主页开始时间');
+
+    window.onload = function() {
+        console.log( +new Date(),'主页结束时间－－－耗时', (+new Date() - jiba));        
+    };
+</script>
+</html>
