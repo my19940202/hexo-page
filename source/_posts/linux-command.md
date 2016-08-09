@@ -1,7 +1,7 @@
 ---
 title: linux_command
 date: 2016-07-10 14:43:30
-tags:
+categories: linux
 ---
 **整理了自己常用到一些Linux命令，自己使用的较多**
 
