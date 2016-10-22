@@ -5,95 +5,25 @@ categories: linux
 ---
 **整理了自己常用到一些Linux命令，自己使用的较多**
 
-<table border=1> <thead> <tr> <td>类型<td>命令<td>作用   <tbody> <tr> <td>文件操作<td>tar -zcvf target.tar.gz sourcefile<td>压缩  <tr> <td>文件操作<td>tar -zxvf target.tar.gz<td>解压缩  <tr> <td>文件操作<td>du -hs path<td>查看文件大小（Mb单位）  <tr> <td>文件操作<td>cp -r xx yy<td>递归方式拷贝（拷贝所有文件和文件夹）  <tr> <td>文件操作<td>wget http://a.com/b.jpg -P pic/<td>wget 指定文件存放的目录  <tr> <td>文件操作<td>chmod 755 imgcat<td>imgcat是imgcat.sh 去掉了后缀名,可以直接 ./imgcat (sh imgcat.sh)  <tr> <td>文件操作<td>scp -r username@servername:/path/filename /target/path<td>拷贝别人开发机的文件(-r 拷贝所有文件和文件夹)  <tr> <td>字符处理<td>sed 's/\t/,/g’ data.txt<td>data.txt中的tab=>','  <tr> <td>字符处理 <td> grep -o 'xxx' data.txt | wc -l<br> grep -r 'name' ./<br>  <td> data.txt中的xxx的出现次数<br> 查看当前目录下面的所有含有name字符串的文件   <tr> <td>字符处理<td>iconv -f 'utf-8' -t 'gbk' a.txt > b.txt<td>utf8=>gbk  <tr> <td>字符处理 <td> sed -n '5,10p' data.txt <br> sed -n '10p' data.txt<br> cat nohup.out| head -n 100<br> cat nohup.out| tail -n 100  <td>看5-10行，看第10行,头100，尾100  <tr> <td>hadoop<td>hadoop fs -getmerge /app/2016 data.txt<td>2016目录下的所有文件merge到data.txt中  <tr> <td>hadoop<td>hadoop fs -cat,-ls<td>fs类型的多种操作  <tr> <td>进程 <td>ps -ax ps -le | grep node <td>查看进程,加上grep进行各种过滤  <tr> <td>其他 <td>tailf nohup.out <td>一旦nohup.out更新就去刷新输出  <tr> <td>其他<td>crontab -e<td>定时任务配置  <tr> <td>其他 <td> date +%Y-%m-%d <br> date -d yesterday +%Y%m%d <br> date -d tomorrow +%Y%m%d <br> date -d '30 days ago' +%Y%m%d  <td>时间获取  </table>
-
-<!-- 
-<table border="1">
-    <thead>
-        <tr>
-            <td>类型</td><td>命令</td><td>作用</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>文件操作</td><td>tar -zcvf target.tar.gz sourcefile</td><td>压缩</td>
-        </tr>
-        <tr>
-            <td>文件操作</td><td>tar -zxvf target.tar.gz</td><td>解压缩</td>
-        </tr>
-        <tr>
-            <td>文件操作</td><td>du -hs path</td><td>查看文件大小（Mb单位）</td>
-        </tr>
-        <tr>
-            <td>文件操作</td><td>cp -r xx yy</td><td>递归方式拷贝（拷贝所有文件和文件夹）</td>
-        </tr>
-        <tr>
-            <td>文件操作</td><td>wget http://a.com/b.jpg -P pic/</td><td>wget 指定文件存放的目录</td>
-        </tr>
-
-        <tr>
-            <td>文件操作</td><td>chmod 755 imgcat</td><td>imgcat是imgcat.sh 去掉了后缀名,可以直接 ./imgcat (sh imgcat.sh)</td>
-        </tr>
-        <tr>
-            <td>文件操作</td><td>scp -r username@servername:/path/filename /target/path</td><td>拷贝别人开发机的文件(-r 拷贝所有文件和文件夹)</td>
-        </tr>
-        <tr>
-            <td>字符处理</td><td>sed 's/\t/,/g’ data.txt</td><td>data.txt中的tab=>','</td>
-        </tr>
-        <tr>
-            <td>字符处理</td>
-            <td>
-                grep -o 'xxx' data.txt | wc -l<br/>
-                grep -r 'name' ./<br/>
-            </td>
-            <td>
-                data.txt中的xxx的出现次数<br/>
-                查看当前目录下面的所有含有name字符串的文件
-            </td>
-        </tr>
-        <tr>
-            <td>字符处理</td><td>iconv -f 'utf-8' -t 'gbk' a.txt > b.txt</td><td>utf8=>gbk</td>
-        </tr>
-        <tr>
-            <td>字符处理</td>
-            <td>
-            sed -n '5,10p' data.txt <br/>
-            sed -n '10p' data.txt<br/>
-            cat nohup.out| head -n 100<br/>
-            cat nohup.out| tail -n 100 
-            </td>
-            <td>看5-10行，看第10行,头100，尾100</td>
-        </tr>
-        <tr>
-            <td>hadoop</td><td>hadoop fs -getmerge /app/2016 data.txt</td><td>2016目录下的所有文件merge到data.txt中</td>
-        </tr>
-        <tr>
-            <td>hadoop</td><td>hadoop fs -cat,-ls</td><td>fs类型的多种操作</td>
-        </tr>
-
-        <tr>
-            <td>进程</td>
-            <td>ps -ax  ps -le | grep node</td>
-            <td>查看进程,加上grep进行各种过滤</td>
-        </tr>
-        <tr>
-            <td>其他</td>
-            <td>tailf nohup.out</td>
-            <td>一旦nohup.out更新就去刷新输出</td>
-        </tr>
-        <tr>
-            <td>其他</td><td>crontab -e</td><td>定时任务配置</td>
-        </tr>
-        <tr>
-            <td>其他</td>
-            <td>
-                date +%Y-%m-%d <br/>
-                date -d yesterday +%Y%m%d <br/>
-                date -d tomorrow +%Y%m%d <br/>
-                date -d '30 days ago' +%Y%m%d
-            </td>
-            <td>时间获取</td>
-        </tr>
-    </tbody>
-</table>
--->
+| 类型 | 命令                 | 作用 |
+| -------- | -------------------- | -------------------- |
+| 文件操作 | ls 20161*.log <br/> ls 20160[1-9]*.log  | 正则方式筛选输出|
+| 文件操作 | tar -zcvf target.tar.gz sourcefile | 压缩|
+| 文件操作 | tar -zxvf target.tar.gz | 解压缩|
+| 文件操作 | du -hs path | 查看文件大小（Mb单位）|
+| 文件操作 | df | 磁盘情况预览|
+| 文件操作 | cp -r xx yy | 递归方式拷贝（拷贝所有文件和文件夹）|
+| 文件操作 | wget http://a.com/b.jpg -P pic/ | wget 指定文件存放的目录|
+| 文件操作 | chmod 755 imgcat | imgcat是imgcat.sh 去掉了后缀名,可以直接 ./imgcat (sh imgcat.sh)|
+| 文件操作 | scp -r username@servername:/path/filename /target/path | 拷贝别人开发机的文件(-r 拷贝所有文件和文件夹)|
+| hadoop | hadoop fs -getmerge /app/2016 data.txt | 2016目录下的所有文件merge到data.txt中 |
+| hadoop | hadoop fs -cat,-ls,-dus,-rmr | fs类型的多种操作 |
+| 进程 | ps -ax  ps -le &#166; grep node | 查看进程,加上grep进行各种过滤|
+| 字符处理 | iconv -f 'utf-8' -t 'gbk' a.txt > b.txt | utf8=>gbk |
+| 字符处理 | grep -o 'xxx' data.txt &#166; wc -l<br/> grep -r 'name' ./<br/> | data.txt中的xxx的出现次数<br/>查看当前目录下面的所有含有name字符串的文件 |
+| 字符处理 | sed 's/\t/,/g’ data.txt | data.txt中的tab=>','|
+| 字符处理 | sed -n '5,10p' data.txt <br/> sed -n '10p' data.txt<br/> cat nohup.out&#166; head -n 100<br/> cat nohup.out&#166; tail -n 100  | 看5-10行，看第10行,头100，尾100 |
+| 其他 | date +%Y-%m-%d <br/>date -d yesterday +%Y%m%d <br/>date -d tomorrow +%Y%m%d <br/>date -d '30 days ago' +%Y%m%d | 时间获取 |
+| 其他 | tailf nohup.out | 一旦nohup.out更新就去刷新输出 |
+| 其他 | crontab -e | 定时任务配置 |
+| 其他 | npm list --depth=1 2>/dev/null | 查看npm以及目录安装的包（过滤错误信息） |
