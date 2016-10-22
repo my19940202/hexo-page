@@ -33,5 +33,27 @@ categories: backend
 xxx.baidu.com其实也是只是个转发的服务器
 具体代码如下
 ```javascript
-    console.log('adasdf')
+var getBAIDUIdFromCookie = function (req) {
+    // get cookie in http request
+    var Cookies = {};
+    req.headers.cookie && req.headers.cookie.split(';').forEach(function( Cookie ) {
+        var parts = Cookie.split('=');
+        Cookies[parts[0].trim()] = (parts[ 1 ] || '' ).trim().split(':')[0];
+    });
+    return Cookies['BAIDUID'];
+}
+
+var ral_option = {};
+var params = urllib.parse(req.url, true);
+ral_option.data = decodeURIComponent(params.query.q);
+// set baiduid
+var BAIDUID = getBAIDUIdFromCookie(req);
+if (BAIDUID) {
+    var tmpData = JSON.parse(ral_option.data);
+    tmpData['baiduid'] = BAIDUID;
+    ral_option.data = JSON.stringify(tmpData);
+}
+else {
+    log.debug('have no BAIDU');
+}
 ```
