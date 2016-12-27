@@ -20,9 +20,10 @@ categories: linux
 | hadoop | hadoop fs -cat,-ls,-dus,-rmr | fs类型的多种操作 |
 | 进程 | ps -ax  ps -le &#166; grep node | 查看进程,加上grep进行各种过滤|
 | 字符处理 | iconv -f 'utf-8' -t 'gbk' a.txt > b.txt | utf8=>gbk |
-| 字符处理 | grep -o 'xxx' data.txt &#166; wc -l<br/> grep -r 'name' ./<br/> | data.txt中的xxx的出现次数<br/>查看当前目录下面的所有含有name字符串的文件 |
+| 字符处理 | grep -o 'xxx' data.txt &#166; wc -l<br/> grep -r 'name' ./<br/>grep -a1 'name' ./<br/> | data.txt中的xxx的出现次数<br/>查看当前目录下面的所有含有name字符串的文件 <br/>输出上下一行(a1), 下一行(A1) |
 | 字符处理 | sed 's/\t/,/g’ data.txt | data.txt中的tab=>','|
 | 字符处理 | sed -n '5,10p' data.txt <br/> sed -n '10p' data.txt<br/> cat nohup.out&#166; head -n 100<br/> cat nohup.out&#166; tail -n 100  | 看5-10行，看第10行,头100，尾100 |
+| sort | sort -n -r -k 2 -t ':' result > result_sorted | key:value形式的文件按照value进行排序 |
 | 其他 | date +%Y-%m-%d <br/>date -d yesterday +%Y%m%d <br/>date -d tomorrow +%Y%m%d <br/>date -d '30 days ago' +%Y%m%d | 时间获取 |
 | 其他 | tailf nohup.out | 一旦nohup.out更新就去刷新输出 |
 | 其他 | crontab -e | 定时任务配置 |
